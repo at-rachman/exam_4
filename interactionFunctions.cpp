@@ -100,16 +100,16 @@ void doCommand(const char command)
 			break;
 		case KEYBOARD_LEFT:
 			playerSymbol = LOOKING_LEFT;
-			if (isOpenSpace())
+			if (isOpenSpace(playerX - 1, playerY))
 			{
-				player
+				playerX -= 1;
 			}				 /* -- MISSING CODE -- */
 			break;
 		case KEYBOARD_RIGHT:
 			playerSymbol = LOOKING_RIGHT;
-			if (isOpenSpace())
+			if (isOpenSpace(playerX + 1, playerY))
 			{
-				player
+				playerX += 1;
 			}				/* -- MISSING CODE -- */
 			break;
 		case KEYBOARD_LOOK:
