@@ -75,7 +75,7 @@ int getLookingAtY(const int currentY, const char currentSymbol)
       return (currentY + 1);
     case LOOKING_LEFT:
     case LOOKING_RIGHT:
-      return currentY;:q
+      return currentY;
   }
   return currentY;
 }
