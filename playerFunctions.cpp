@@ -1,5 +1,5 @@
 /*
- * Group Members: Atmanjaya Rachman, Ben, Yunjun Ma
+ * Group Members: Atmanjaya Rachman, Ben Wheaton, Yunjun Ma
  */
 
 // DO NOT CHANGE OR REMOVE THE FOLLOWING LINES
