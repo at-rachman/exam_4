@@ -52,221 +52,221 @@ int min(int, int);
 
 int getLookingAtX(const int currentX, const char currentSymbol)
 {
-	switch(currentSymbol)
-	{
-		case LOOKING_UP:
-		case LOOKING_DOWN:
-			return currentX;
-		case LOOKING_LEFT:
-			return (currentX - 1);
-		case LOOKING_RIGHT:
-			return (currentX + 1);
-	}
-	return currentX;
+  switch(currentSymbol)
+  {
+    case LOOKING_UP:
+    case LOOKING_DOWN:
+      return currentX;
+    case LOOKING_LEFT:
+      return (currentX - 1);
+    case LOOKING_RIGHT:
+      return (currentX + 1);
+  }
+  return currentX;
 }
 
 int getLookingAtY(const int currentY, const char currentSymbol)
 {
-	switch(currentSymbol)
-	{
-		case LOOKING_UP:
+  switch(currentSymbol)
+  {
+    case LOOKING_UP:
       return (currentY - 1);
     case LOOKING_DOWN:
       return (currentY + 1);
     case LOOKING_LEFT:
     case LOOKING_RIGHT:
       return currentY;:q
-	}
-	return currentY;
+  }
+  return currentY;
 }
 
 void inventoryAdd(const char item)
 {
-	int inventoryIndex = convertMapSquareToInventoryIndex(item);
-	if (inventoryIndex >= 0)
-	{
-		switch(item)
-		{
-			case MAP_SQUARE_KEY:
-			case MAP_SQUARE_PEBBLE:
-			case MAP_SQUARE_PEBBLES:
-			case MAP_SQUARE_PLANK:
-			case MAP_SQUARE_ROPE:
-				INVENTORY_ARRAY[inventoryIndex] += 1;
-				break;
-			case MAP_SQUARE_SLINGSHOT:
-				INVENTORY_ARRAY[inventoryIndex] = 1;
-				break;
-		}
-	}
+  int inventoryIndex = convertMapSquareToInventoryIndex(item);
+  if (inventoryIndex >= 0)
+  {
+    switch(item)
+    {
+      case MAP_SQUARE_KEY:
+      case MAP_SQUARE_PEBBLE:
+      case MAP_SQUARE_PEBBLES:
+      case MAP_SQUARE_PLANK:
+      case MAP_SQUARE_ROPE:
+        INVENTORY_ARRAY[inventoryIndex] += 1;
+        break;
+      case MAP_SQUARE_SLINGSHOT:
+        INVENTORY_ARRAY[inventoryIndex] = 1;
+        break;
+    }
+  }
 }
 
 bool inventoryHas(const char item)
 {
-	int inventoryIndex = convertMapSquareToInventoryIndex(item);
-	return (inventoryIndex >= 0 && INVENTORY_ARRAY[inventoryIndex] > 0);
+  int inventoryIndex = convertMapSquareToInventoryIndex(item);
+  return (inventoryIndex >= 0 && INVENTORY_ARRAY[inventoryIndex] > 0);
 }
 
 bool inventoryUse(const char item)
 {
-	bool success = false;
+  bool success = false;
 
-	int inventoryIndex = convertMapSquareToInventoryIndex(item);
-	if (inventoryIndex >= 0)
-	{
-		switch(inventoryIndex)
-		{
-			case INVENTORY_INDEX_KEYS:
-			case INVENTORY_INDEX_PEBBLES:
-			case INVENTORY_INDEX_PLANK:
-			case INVENTORY_INDEX_ROPE:
-				if (INVENTORY_ARRAY[inventoryIndex] > 0)
-				{
-					INVENTORY_ARRAY[inventoryIndex] -= 1;
-					success = true;
-				}
-				break;
-			case INVENTORY_INDEX_SLINGSHOT:
-				if (INVENTORY_ARRAY[inventoryIndex] > 0)
-				{
-					success = true;
-				}
-				break;
-		}
-	}
+  int inventoryIndex = convertMapSquareToInventoryIndex(item);
+  if (inventoryIndex >= 0)
+  {
+    switch(inventoryIndex)
+    {
+      case INVENTORY_INDEX_KEYS:
+      case INVENTORY_INDEX_PEBBLES:
+      case INVENTORY_INDEX_PLANK:
+      case INVENTORY_INDEX_ROPE:
+        if (INVENTORY_ARRAY[inventoryIndex] > 0)
+        {
+          INVENTORY_ARRAY[inventoryIndex] -= 1;
+          success = true;
+        }
+        break;
+      case INVENTORY_INDEX_SLINGSHOT:
+        if (INVENTORY_ARRAY[inventoryIndex] > 0)
+        {
+          success = true;
+        }
+        break;
+    }
+  }
 
-	return success;
+  return success;
 }
 
 void inventorySet(const char newInventoryItems[], const int newInventoryValues[], const int count)
 {
-	for (int i = 0; i < INVENTORY_LENGTH; i++)
-	{
-		bool itemIsInNewList = false;
+  for (int i = 0; i < INVENTORY_LENGTH; i++)
+  {
+    bool itemIsInNewList = false;
 
-		for (int j = 0; j < count; j++)
-		{
-			int index = convertMapSquareToInventoryIndex(newInventoryItems[j]);
-			if (index == i)
-			{
-				INVENTORY_ARRAY[index] = newInventoryValues[j];
-				itemIsInNewList = true;
-				break;
-			}
-		}
+    for (int j = 0; j < count; j++)
+    {
+      int index = convertMapSquareToInventoryIndex(newInventoryItems[j]);
+      if (index == i)
+      {
+        INVENTORY_ARRAY[index] = newInventoryValues[j];
+        itemIsInNewList = true;
+        break;
+      }
+    }
 
-		if (!itemIsInNewList)
-		{
-			INVENTORY_ARRAY[i] = 0;
-		}
-	}
+    if (!itemIsInNewList)
+    {
+      INVENTORY_ARRAY[i] = 0;
+    }
+  }
 }
 
 bool printInventoryRow(const int row, const int displayWidth)
 {
-	bool success = false;
+  bool success = false;
 
-	const int symbolWidth = max(0, min(2, displayWidth));
-	const int numberWidth = max(0, min(2, displayWidth - symbolWidth));
-	const int nameWidth = max(0, displayWidth - (numberWidth + symbolWidth));
+  const int symbolWidth = max(0, min(2, displayWidth));
+  const int numberWidth = max(0, min(2, displayWidth - symbolWidth));
+  const int nameWidth = max(0, displayWidth - (numberWidth + symbolWidth));
 
-	switch(row)
-	{
-		case 0:
-		{
-			int itemIndex = INVENTORY_INDEX_KEYS;
-			int count = INVENTORY_ARRAY[itemIndex];
-			if (count > 0)
-			{
-				cout << convertInventoryIndexToItemChar(itemIndex) << "Key" << count;
-				success = true;
-			}
-			break;
-		}
-		case 1:
-		{
-			int itemIndex = INVENTORY_INDEX_ROPE;
-			int count = INVENTORY_ARRAY[itemIndex];
-			if (count > 0)
-			{
-				cout << convertInventoryIndexToItemChar(itemIndex) << "Rope" << count;
-				success = true;
-			}
-			break;
-		}
-		case 2:
-		{
-			int itemIndex = INVENTORY_INDEX_PLANK;
-			int count = INVENTORY_ARRAY[itemIndex];
-			if (count > 0)
-			{
-				cout << convertInventoryIndexToItemChar(itemIndex) << "Wood Plank" << count;
-				success = true;
-			}
-			break;
-		}
-		case 3:
-		{
-			break;
-		}
-		case 4:
-		{
-			bool hasSlingshot = INVENTORY_ARRAY[INVENTORY_INDEX_SLINGSHOT] > 0;
-			int itemIndex = INVENTORY_INDEX_PEBBLES;
-			int count = INVENTORY_ARRAY[itemIndex];
-			/* -- MISSING CODE -- */
-			break;
-		}
-	}
+  switch(row)
+  {
+    case 0:
+      {
+        int itemIndex = INVENTORY_INDEX_KEYS;
+        int count = INVENTORY_ARRAY[itemIndex];
+        if (count > 0)
+        {
+          cout << convertInventoryIndexToItemChar(itemIndex) << "Key" << count;
+          success = true;
+        }
+        break;
+      }
+    case 1:
+      {
+        int itemIndex = INVENTORY_INDEX_ROPE;
+        int count = INVENTORY_ARRAY[itemIndex];
+        if (count > 0)
+        {
+          cout << convertInventoryIndexToItemChar(itemIndex) << "Rope" << count;
+          success = true;
+        }
+        break;
+      }
+    case 2:
+      {
+        int itemIndex = INVENTORY_INDEX_PLANK;
+        int count = INVENTORY_ARRAY[itemIndex];
+        if (count > 0)
+        {
+          cout << convertInventoryIndexToItemChar(itemIndex) << "Wood Plank" << count;
+          success = true;
+        }
+        break;
+      }
+    case 3:
+      {
+        break;
+      }
+    case 4:
+      {
+        bool hasSlingshot = INVENTORY_ARRAY[INVENTORY_INDEX_SLINGSHOT] > 0;
+        int itemIndex = INVENTORY_INDEX_PEBBLES;
+        int count = INVENTORY_ARRAY[itemIndex];
+        /* -- MISSING CODE -- */
+        break;
+      }
+  }
 
-	return success;
+  return success;
 }
 
 int convertMapSquareToInventoryIndex(const char mapSquare)
 {
-	switch(mapSquare)
-	{
-		case MAP_SQUARE_KEY:
-			return INVENTORY_INDEX_KEYS;
-		case MAP_SQUARE_PEBBLE:
-		case MAP_SQUARE_PEBBLES:
-			return INVENTORY_INDEX_PEBBLES;
-		case MAP_SQUARE_PLANK:
-			return INVENTORY_INDEX_PLANK;
-		case MAP_SQUARE_ROPE:
-			return INVENTORY_INDEX_ROPE;
-		case MAP_SQUARE_SLINGSHOT:
-			return INVENTORY_INDEX_SLINGSHOT;
-	}
-	return -1;
+  switch(mapSquare)
+  {
+    case MAP_SQUARE_KEY:
+      return INVENTORY_INDEX_KEYS;
+    case MAP_SQUARE_PEBBLE:
+    case MAP_SQUARE_PEBBLES:
+      return INVENTORY_INDEX_PEBBLES;
+    case MAP_SQUARE_PLANK:
+      return INVENTORY_INDEX_PLANK;
+    case MAP_SQUARE_ROPE:
+      return INVENTORY_INDEX_ROPE;
+    case MAP_SQUARE_SLINGSHOT:
+      return INVENTORY_INDEX_SLINGSHOT;
+  }
+  return -1;
 }
 
 char convertInventoryIndexToItemChar(const int index)
 {
-	switch(index)
-	{
-		case INVENTORY_INDEX_KEYS:
-			return MAP_SQUARE_KEY;
-		case INVENTORY_INDEX_PEBBLES:
-			return MAP_SQUARE_PEBBLE;
-		case INVENTORY_INDEX_PLANK:
-			return MAP_SQUARE_PLANK;
-		case INVENTORY_INDEX_ROPE:
-			return MAP_SQUARE_ROPE;
-		case INVENTORY_INDEX_SLINGSHOT:
-			return MAP_SQUARE_SLINGSHOT;
-	}
-	return ' ';
+  switch(index)
+  {
+    case INVENTORY_INDEX_KEYS:
+      return MAP_SQUARE_KEY;
+    case INVENTORY_INDEX_PEBBLES:
+      return MAP_SQUARE_PEBBLE;
+    case INVENTORY_INDEX_PLANK:
+      return MAP_SQUARE_PLANK;
+    case INVENTORY_INDEX_ROPE:
+      return MAP_SQUARE_ROPE;
+    case INVENTORY_INDEX_SLINGSHOT:
+      return MAP_SQUARE_SLINGSHOT;
+  }
+  return ' ';
 }
 
 int max(int a, int b)
 {
-	return a;
+  return a;
 }
 
 int min(int a, int b)
 {
-	return a;
+  return a;
 }
 
 // DO NOT CHANGE OR REMOVE THE FOLLOWING LINE
