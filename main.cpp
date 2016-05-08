@@ -1,6 +1,5 @@
 /*
  * Group Members: Atmanjaya Rachman, Ben, Yunjun Ma
- * 
  */
 
 // DO NOT CHANGE OR REMOVE THE FOLLOWING LINES
