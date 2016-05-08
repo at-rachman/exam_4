@@ -70,182 +70,182 @@ bool saveGame(string fileName, const int, const int, const char, const char[], c
 
 char getMapSquare(const int x, const int y)
 {
-	char result = MAP_SQUARE_ROCK;
-	if (x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT)
-	{
-		result = MAP[x + y];
-	}
-	return result;
+  char result = MAP_SQUARE_ROCK;
+  if (x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT)
+  {
+    result = MAP[x + y];
+  }
+  return result;
 }
 
 bool setMapSquare(const int x, const int y, const char currentValue, const char newValue)
 {
-	bool result = false;
+  bool result = false;
 
-	if (x >= 0 && x < MAP_WIDTH &&
-		y >= 0 && y < MAP_HEIGHT &&
-		getMapSquare(x, y) == currentValue)
-	{
-		MAP[x + y] = newValue;
-		result = true;
-	}
+  if (x >= 0 && x < MAP_WIDTH &&
+      y >= 0 && y < MAP_HEIGHT &&
+      getMapSquare(x, y) == currentValue)
+  {
+    MAP[x + y] = newValue;
+    result = true;
+  }
 
-	return result;
+  return result;
 }
 
 bool clearMapSquare(const int x, const int y, const char currentValue)
 {
-	return setMapSquare(x, y, currentValue, MAP_SQUARE_EMPTY);
+  return setMapSquare(x, y, currentValue, MAP_SQUARE_EMPTY);
 }
 
 bool isOpenSpace(const int x, const int y)
 {
-	char mapSquare = getMapSquare(x, y);
-	return (mapSquare == MAP_SQUARE_EMPTY);
+  char mapSquare = getMapSquare(x, y);
+  return (mapSquare == MAP_SQUARE_EMPTY);
 }
 
 void printMapRow(const int centerX, const int centerY, const int rowOffset, const int screenWidth, const int screenRadius, const char playerChar)
 {
-	const int row = centerY - screenRadius + rowOffset;
-	for (int col = centerX - screenRadius; col <= centerX + screenRadius; col++)
-	{
-		if (row == centerY && col == centerX)
-		{
-			cout << playerChar;
-		}
-		else if (row >= 0 && row < MAP_HEIGHT && col >= 0 && col < MAP_WIDTH)
-		{
-			cout << MAP[row * MAP_WIDTH + col];
-		}
-		else
-		{
-			cout << MAP_SQUARE_CHASM;
-		}
-	}
+  const int row = centerY - screenRadius + rowOffset;
+  for (int col = centerX - screenRadius; col <= centerX + screenRadius; col++)
+  {
+    if (row == centerY && col == centerX)
+    {
+      cout << playerChar;
+    }
+    else if (row >= 0 && row < MAP_HEIGHT && col >= 0 && col < MAP_WIDTH)
+    {
+      cout << MAP[row * MAP_WIDTH + col];
+    }
+    else
+    {
+      cout << MAP_SQUARE_CHASM;
+    }
+  }
 }
 
 bool loadGame(string fileName)
 {
-	bool success = false;
+  bool success = false;
 
-	ifstream file;
-	/* -- MISSING CODE -- */
-	if (!file.fail())
-	{
-		int mapWidth, mapHeight, playerLocationAsIndex;
-		char lookingDirection;
-		/* -- MISSING CODE -- */
-		if (mapWidth > 0 && mapHeight > 0)
-		{
-			const int charsToWriteIncludingNullTerminator = mapWidth + 1;
-			char buffer[MAP_MAX_WIDTH_HEIGHT + 1];
-			string mapText = "";
+  ifstream file;
+  /* -- MISSING CODE -- */
+  if (!file.fail())
+  {
+    int mapWidth, mapHeight, playerLocationAsIndex;
+    char lookingDirection;
+    /* -- MISSING CODE -- */
+    if (mapWidth > 0 && mapHeight > 0)
+    {
+      const int charsToWriteIncludingNullTerminator = mapWidth + 1;
+      char buffer[MAP_MAX_WIDTH_HEIGHT + 1];
+      string mapText = "";
 
-			for (int i = 0; /* -- MISSING CODE -- */; i++)
-			{
-				/* -- MISSING CODE -- */
-				if (file.fail())
-				{
-					break;
-				}
-				else if (buffer[0] == '\0')
-				{
-					i--;
-					continue;
-				}
-				/* -- MISSING CODE -- */
-			}
+      for (int i = 0; /* -- MISSING CODE -- */; i++)
+      {
+        /* -- MISSING CODE -- */
+        if (file.fail())
+        {
+          break;
+        }
+        else if (buffer[0] == '\0')
+        {
+          i--;
+          continue;
+        }
+        /* -- MISSING CODE -- */
+      }
 
-			if (mapText.length() == mapWidth * mapHeight)
-			{
-				MAP = mapText;
-				MAP_WIDTH = mapWidth;
-				MAP_HEIGHT = mapHeight;
-				FILE_START_LOCATION_AS_INDEX = playerLocationAsIndex;
-				FILE_START_LOOKING_DIRECTION = lookingDirection;
+      if (mapText.length() == mapWidth * mapHeight)
+      {
+        MAP = mapText;
+        MAP_WIDTH = mapWidth;
+        MAP_HEIGHT = mapHeight;
+        FILE_START_LOCATION_AS_INDEX = playerLocationAsIndex;
+        FILE_START_LOOKING_DIRECTION = lookingDirection;
 
-				if (!file.fail())
-				{
-					char item;
-					int value;
+        if (!file.fail())
+        {
+          char item;
+          int value;
 
-					for (int i = 0; i < FILE_INVENTORY_LENGTH; i++)
-					{
-						if (file.fail())
-						{
-							FILE_INVENTORY_ITEMS[i] = FILE_INVENTORY_ITEM_EMPTY;
-							FILE_INVENTORY_VALUES[i] = FILE_INVENTORY_VALUE_EMPTY;
-							continue;
-						}
+          for (int i = 0; i < FILE_INVENTORY_LENGTH; i++)
+          {
+            if (file.fail())
+            {
+              FILE_INVENTORY_ITEMS[i] = FILE_INVENTORY_ITEM_EMPTY;
+              FILE_INVENTORY_VALUES[i] = FILE_INVENTORY_VALUE_EMPTY;
+              continue;
+            }
 
-						/* -- MISSING CODE -- */
-						if (file.fail())
-						{
-							i--;
-							continue;
-						}
+            /* -- MISSING CODE -- */
+            if (file.fail())
+            {
+              i--;
+              continue;
+            }
 
-						/* -- MISSING CODE -- */
-						if (file.fail())
-						{
-							i--;
-							continue;
-						}
+            /* -- MISSING CODE -- */
+            if (file.fail())
+            {
+              i--;
+              continue;
+            }
 
-						FILE_INVENTORY_ITEMS[i] = item;
-						FILE_INVENTORY_VALUES[i] = value;
-					}
-				}
+            FILE_INVENTORY_ITEMS[i] = item;
+            FILE_INVENTORY_VALUES[i] = value;
+          }
+        }
 
-				success = true;
-			}
-		}
-	}
+        success = true;
+      }
+    }
+  }
 
-	file.close();
+  file.close();
 
-	return success;
+  return success;
 }
 
 bool saveGame(string fileName, const int playerX, const int playerY, const char lookingDirection, const char inventoryItems[], const int inventoryValues[], const int inventoryLength)
 {
-	bool success = false;
+  bool success = false;
 
-	ofstream file;
-	/* -- MISSING CODE -- */
-	if (!file.fail())
-	{
-		// write map dimensions and player location
-		/* -- MISSING CODE -- */
-		file << MAP_WIDTH << ' ' << MAP_HEIGHT << ' ' << playerSymbolIndex << ' ' << lookingDirection << endl;
+  ofstream file;
+  /* -- MISSING CODE -- */
+  if (!file.fail())
+  {
+    // write map dimensions and player location
+    /* -- MISSING CODE -- */
+    file << MAP_WIDTH << ' ' << MAP_HEIGHT << ' ' << playerSymbolIndex << ' ' << lookingDirection << endl;
 
-		// write map
-		for (int i = 0; i < MAP_HEIGHT; i++)
-		{
-			file << /* -- MISSING CODE -- REPLACE true AT RIGHT -- */ true << endl;
-		}
+    // write map
+    for (int i = 0; i < MAP_HEIGHT; i++)
+    {
+      file << /* -- MISSING CODE -- REPLACE true AT RIGHT -- */ true << endl;
+    }
 
-		// write inventory
-		for (int i = 0; i < inventoryLength; i++)
-		{
-			file << inventoryItems[i] << ' ' << inventoryValues[i] << endl;
-		}
+    // write inventory
+    for (int i = 0; i < inventoryLength; i++)
+    {
+      file << inventoryItems[i] << ' ' << inventoryValues[i] << endl;
+    }
 
-		success = !file.fail();
-	}
+    success = !file.fail();
+  }
 
-	file.close();
+  file.close();
 
-	return success;
+  return success;
 }
 
 void loadDefaultMap()
 {
-	MAP = " ";
-	MAP_WIDTH = 1;
-	MAP_HEIGHT = 1;
-	FILE_START_LOCATION_AS_INDEX = 0;
-	FILE_START_LOOKING_DIRECTION = 'v';
+  MAP = " ";
+  MAP_WIDTH = 1;
+  MAP_HEIGHT = 1;
+  FILE_START_LOCATION_AS_INDEX = 0;
+  FILE_START_LOOKING_DIRECTION = 'v';
 }
 
 // DO NOT CHANGE OR REMOVE THE FOLLOWING LINE
