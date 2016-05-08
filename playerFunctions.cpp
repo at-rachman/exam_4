@@ -90,6 +90,7 @@ void inventoryAdd(const char item)
       case MAP_SQUARE_KEY:
       case MAP_SQUARE_PEBBLE:
       case MAP_SQUARE_PEBBLES:
+        INVENTORY_ARRAY[inventoryIndex] += 2; /* Atmanjaya updated 5/8 */
       case MAP_SQUARE_PLANK:
       case MAP_SQUARE_ROPE:
         INVENTORY_ARRAY[inventoryIndex] += 1;
