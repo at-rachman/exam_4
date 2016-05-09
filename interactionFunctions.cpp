@@ -243,10 +243,22 @@ void doUse(const int x, const int y, const char lookingDirection)
 		setMapSquare(itemX, itemY, mapSquare, MAP_SQUARE_ROPE_TIED);
 		lastMessage = "Standing on the tips of your toes, you reach up and tie the rope to a beam above you.";
 	}
+  else if (mapSquare == MAP_SQUARE_CHASM && itemToUse == MAP_SQUARE_PEBBLE)
+  {
+    inventoryUse(itemToUse);
+    setMapSquare(itemX, itemY, mapSquare, MAP_SQUARE_CHASM);
+    lastMessage = "You drop a pebble into the chasm, counting the seconds until it hits the bottom. You hear nothing.";
+  }
+  else if (mapSquare == MAP_SQUARE_PLANK && itemToUse == MAP_SQUARE_PEBBLE)
+  {
+    inventoryUse(itemToUse);
+    setMapSquare(itemX, itemY, mapSquare, MAP_SQUARE_PEBBLE);
+    lastMessage = "You shoot the plank of wood with your slingshot. No more plank.";
+  }
 	else if (mapSquare == MAP_SQUARE_LOCK && itemToUse == MAP_SQUARE_KEY)
 	{
 		inventoryUse(itemToUse);
-		clearMapSquare(itemX, itemY, mapSquare);
+		clearMapSquare(itemX, itemY, mapSquare, MAP_SQUARE_EMPTY);
 		lastMessage = "You turn the key. Hard. Just as the lock opens you feel the key snap in half.";
 	}
 	else
