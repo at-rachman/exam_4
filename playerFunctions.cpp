@@ -215,7 +215,11 @@ bool printInventoryRow(const int row, const int displayWidth)
         bool hasSlingshot = INVENTORY_ARRAY[INVENTORY_INDEX_SLINGSHOT] > 0;
         int itemIndex = INVENTORY_INDEX_PEBBLES;
         int count = INVENTORY_ARRAY[itemIndex];
-        /* -- MISSING CODE -- */
+        if (count > 0)
+        {
+         cout << convertInventoryIndexToItemChar(itemIndex) << "Slingshot" << count;
+         success = true; 
+        } /* -- Atmanjaya updated 5/8 -- */
         break;
       }
   }
