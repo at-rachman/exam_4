@@ -21,7 +21,7 @@ using namespace std;
 
 int main()
 {
-	loadDefaultMap(); /* Atmanjaya updated 5/8 */
+	doLoadDefaultGame(); /* Atmanjaya updated 5/8 */
 
 	while (true)
 	{

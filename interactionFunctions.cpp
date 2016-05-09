@@ -103,29 +103,29 @@ void doCommand(const char command)
 			if (isOpenSpace(playerX - 1, playerY))
 			{
 				playerX -= 1;
-			}				 /* -- MISSING CODE -- */
+			}				 /* -- Atmanjaya Updated 5/7 -- */
 			break;
 		case KEYBOARD_RIGHT:
 			playerSymbol = LOOKING_RIGHT;
 			if (isOpenSpace(playerX + 1, playerY))
 			{
 				playerX += 1;
-			}				/* -- MISSING CODE -- */
+			}				/* -- Atmanjaya Updated 5/7 -- */
 			break;
 		case KEYBOARD_LOOK:
 			doLook(playerX, playerY, playerSymbol);
 			break;
 		case KEYBOARD_TAKE:
-			doTake(playerX, playerY, playerSymbol); /* -- MISSING CODE -- */
+			doTake(playerX, playerY, playerSymbol); /* -- Atmanjaya Updated 5/7 -- */
 			break;
 		case KEYBOARD_USE:
-			doUse(playerX, playerY, playerSymbol); /* -- MISSING CODE -- */
+			doUse(playerX, playerY, playerSymbol); /* -- Atmnajaya Updated 5/7 -- */
 			break;
 		case KEYBOARD_LOAD_GAME:
-			doLoadGame(); /* -- MISSING CODE -- */
+			doLoadGame(slot); /* -- Atmanjaya Updated 5/8 -- */
 			break;
 		case KEYBOARD_SAVE_GAME:
-			doSaveGame()/* -- MISSING CODE -- */
+			doSaveGame(slot)/* -- Atmanjaya Updated 5/8 -- */
 			break;
 	}
 }
