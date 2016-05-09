@@ -242,9 +242,9 @@ bool saveGame(string fileName, const int playerX, const int playerY, const char 
 void loadDefaultMap()
 {
   MAP = " ";
-  MAP_WIDTH = 1;
-  MAP_HEIGHT = 1;
-  FILE_START_LOCATION_AS_INDEX = 0;
+  MAP_WIDTH = 5;
+  MAP_HEIGHT = 3;
+  FILE_START_LOCATION_AS_INDEX = 7;
   FILE_START_LOOKING_DIRECTION = '>';
 }
 

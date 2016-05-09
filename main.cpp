@@ -18,11 +18,11 @@ using namespace std;
  * FUNCTION PROTOTYPES
  */
 // none here yet
-void doLoadDefaultGame();
 
 int main()
 {
-	doLoadDefaultGame(); /* Atmanjaya updated 5/8 */
+	//doLoadGame(); /* Atmanjaya updated 5/8 */
+  loadDefaultMap();
 
 	while (true)
 	{
