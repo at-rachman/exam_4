@@ -21,17 +21,17 @@ using namespace std;
 
 int main()
 {
-	//doLoadGame(); /* Atmanjaya updated 5/8 */
+  //doLoadGame(); /* Atmanjaya updated 5/8 */
   loadDefaultMap();
 
-	while (true)
-	{
-		clearScreen();
-		printScreen();
+  while (true)
+  {
+    clearScreen();
+    printScreen();
 
-		char input = readCharacterInput();
-		doCommand(input);
-	}
+    char input = readCharacterInput();
+    doCommand(input);
+  }
 
-	return 0;
+  return 0;
 }
