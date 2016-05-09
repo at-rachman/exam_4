@@ -221,7 +221,7 @@ void doUse(const int x, const int y, const char lookingDirection)
 	cout << endl << "What would you like to use? ";
 	cin >> itemToUse;
 	cin.ignore(1024, '\n');
-	if (/* -- MISSING CODE -- REPLACE true AT RIGHT -- */ true)
+	if (!inventoryHas(itemToUse)) // Atmanjaya Updated 5/8
 	{
 		lastMessage = "You don't have any.";
 		return;
@@ -229,7 +229,7 @@ void doUse(const int x, const int y, const char lookingDirection)
 
 	int itemX = getLookingAtX(x, lookingDirection);
 	int itemY = getLookingAtY(y, lookingDirection);
-	char mapSquare /* -- MISSING CODE -- */;
+	char mapSquare = getMapSquare(itemX, itemY); // Atmanjaya Updated 5/8
 
 	if (mapSquare == MAP_SQUARE_CHASM && itemToUse == MAP_SQUARE_PLANK)
 	{

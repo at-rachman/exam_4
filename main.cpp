@@ -18,6 +18,7 @@ using namespace std;
  * FUNCTION PROTOTYPES
  */
 // none here yet
+void doLoadDefaultGame();
 
 int main()
 {
