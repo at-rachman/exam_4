@@ -244,7 +244,7 @@ bool saveGame(string fileName, const int playerX, const int playerY, const char 
 
 void loadDefaultMap()
 {
-  MAP = " ";
+  MAP = "&.@:=     OYO k";
   MAP_WIDTH = 5;
   MAP_HEIGHT = 3;
   FILE_START_LOCATION_AS_INDEX = 7;

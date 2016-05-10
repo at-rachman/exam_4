@@ -17,7 +17,7 @@ using namespace std;
 /*
  * SCREEN CONSTANTS AND SETTINGS
  */
-const int SCREEN_MAP_RADIUS = 15;
+const int SCREEN_MAP_RADIUS = 5;
 const int SCREEN_MAP_WIDTH_HEIGHT = SCREEN_MAP_RADIUS * 2 + 1;
 const int SCREEN_INVENTORY_WIDTH = 15;
 
