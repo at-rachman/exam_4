@@ -1,7 +1,7 @@
 /*
  * Group Members: Atmanjaya Rachman, Ben Wheaton, Yunjun Ma
  */
-
+// This is a test
 // DO NOT CHANGE OR REMOVE THE FOLLOWING LINES
 #include <cstring>
 #include <fstream>
