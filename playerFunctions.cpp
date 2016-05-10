@@ -86,11 +86,12 @@ void inventoryAdd(const char item)
   if (inventoryIndex >= 0)
   {
     switch(item)
-    {
-      case MAP_SQUARE_KEY:
-      case MAP_SQUARE_PEBBLE:
+    { 
       case MAP_SQUARE_PEBBLES:
-        INVENTORY_ARRAY[inventoryIndex] += 2; /* Atmanjaya updated 5/8 */
+        INVENTORY_ARRAY[inventoryIndex] += 2;
+        break;
+      case MAP_SQUARE_PEBBLE: //updated during class session
+      case MAP_SQUARE_KEY:
       case MAP_SQUARE_PLANK:
       case MAP_SQUARE_ROPE:
         INVENTORY_ARRAY[inventoryIndex] += 1;
@@ -215,10 +216,18 @@ bool printInventoryRow(const int row, const int displayWidth)
         bool hasSlingshot = INVENTORY_ARRAY[INVENTORY_INDEX_SLINGSHOT] > 0;
         int itemIndex = INVENTORY_INDEX_PEBBLES;
         int count = INVENTORY_ARRAY[itemIndex];
-        if (count > 0)
+        if (hasSlingshot)
         {
-         cout << convertInventoryIndexToItemChar(itemIndex) << "Slingshot" << count;
+          cout << MAP_SQUARE_SLINGSHOT << "Slingshot" << endl;
+        }
+        else if (count > 0)
+        {
+         cout << convertInventoryIndexToItemChar(itemIndex) << "Pebble" << count;
          success = true; 
+        }
+        else
+        {
+          cout << " " << endl;
         } /* -- Atmanjaya updated 5/8 -- */
         break;
       }
