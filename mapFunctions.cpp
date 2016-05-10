@@ -101,7 +101,7 @@ bool clearMapSquare(const int x, const int y, const char currentValue)
 bool isOpenSpace(const int x, const int y)
 {
   char mapSquare = getMapSquare(x, y);
-  return (mapSquare == MAP_SQUARE_EMPTY);
+  return (mapSquare == MAP_SQUARE_EMPTY || mapSquare == MAP_SQUARE_PLANK_SET || mapSquare == MAP_SQUARE_ROPE_TIED); // Jun: added conditions PLANK_SET, and ROPE_TIED
 }
 
 void printMapRow(const int centerX, const int centerY, const int rowOffset, const int screenWidth, const int screenRadius, const char playerChar)
