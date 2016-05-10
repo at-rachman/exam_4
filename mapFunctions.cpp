@@ -219,7 +219,7 @@ bool saveGame(string fileName, const int playerX, const int playerY, const char 
   if (!file.fail())
   {
     // write map dimensions and player location
-    /* -- MISSING CODE -- */
+    int playerSymbolIndex = MAP_HEIGHT * playerY + playerX; /* -- Atmanjaya Updated 5/10 -- */
     file << MAP_WIDTH << ' ' << MAP_HEIGHT << ' ' << playerSymbolIndex << ' ' << lookingDirection << endl;
 
     // write map

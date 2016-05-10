@@ -218,17 +218,14 @@ bool printInventoryRow(const int row, const int displayWidth)
         int count = INVENTORY_ARRAY[itemIndex];
         if (hasSlingshot)
         {
-          cout << MAP_SQUARE_SLINGSHOT << "Slingshot" << endl;
+          cout << MAP_SQUARE_SLINGSHOT << "Slingshot" << count;
+          success = true;
         }
         else if (count > 0)
         {
          cout << convertInventoryIndexToItemChar(itemIndex) << "Pebble" << count;
          success = true; 
-        }
-        else
-        {
-          cout << " " << endl;
-        } /* -- Atmanjaya updated 5/8 -- */
+        }/* -- Atmanjaya updated 5/8 -- */
         break;
       }
   }

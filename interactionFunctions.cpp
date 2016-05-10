@@ -125,7 +125,7 @@ void doCommand(const char command)
       doLoadGame(); /* -- Atmanjaya Updated 5/8 -- */
       break;
     case KEYBOARD_SAVE_GAME:
-      doSaveGame()/* -- Atmanjaya Updated 5/8 -- */
+      doSaveGame();/* -- Atmanjaya Updated 5/8 -- */
         break;
   }
 }
@@ -258,7 +258,7 @@ void doUse(const int x, const int y, const char lookingDirection)
   else if (mapSquare == MAP_SQUARE_LOCK && itemToUse == MAP_SQUARE_KEY)
   {
     inventoryUse(itemToUse);
-    clearMapSquare(itemX, itemY, mapSquare, MAP_SQUARE_EMPTY);
+    setMapSquare(itemX, itemY, mapSquare, MAP_SQUARE_EMPTY);
     lastMessage = "You turn the key. Hard. Just as the lock opens you feel the key snap in half.";
   }
   else
