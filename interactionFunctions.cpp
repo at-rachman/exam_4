@@ -122,10 +122,10 @@ void doCommand(const char command)
       doUse(playerX, playerY, playerSymbol); /* -- Atmnajaya Updated 5/7 -- */
       break;
     case KEYBOARD_LOAD_GAME:
-      doLoadGame(slot); /* -- Atmanjaya Updated 5/8 -- */
+      doLoadGame(); /* -- Atmanjaya Updated 5/8 -- */
       break;
     case KEYBOARD_SAVE_GAME:
-      doSaveGame(slot)/* -- Atmanjaya Updated 5/8 -- */
+      doSaveGame()/* -- Atmanjaya Updated 5/8 -- */
         break;
   }
 }
@@ -277,7 +277,7 @@ void doLoadGame()
 
 void doLoadGame(const char slot)
 {
-  if (/* -- MISSING CODE -- REPLACE true AT RIGHT -- */ true)
+  if (!isdigit(slot)/* -- MISSING CODE -- REPLACE true AT RIGHT -- true */)
   {
     lastMessage = "Must enter 0-9 to load a saved game.";
     return;
@@ -325,7 +325,7 @@ void doSaveGame()
   cout << endl << "Enter 0-9 to save the game in that slot. Enter any other visible character to cancel. Input: ";
   char slot;
   cin >> slot;
-  if (/* -- MISSING CODE -- REPLACE true AT RIGHT -- */ true)
+  if (!isdigit(slot)/* -- MISSING CODE -- REPLACE true AT RIGHT -- true */ )
   {
     lastMessage = "Must enter 0-9 to load a saved game.";
     return;

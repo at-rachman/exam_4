@@ -119,7 +119,7 @@ void printMapRow(const int centerX, const int centerY, const int rowOffset, cons
     }
     else
     {
-      cout << MAP_SQUARE_CHASM;
+      cout << MAP_SQUARE_ROCK;
     }
   }
 }
@@ -129,16 +129,19 @@ bool loadGame(string fileName)
   bool success = false;
 
   ifstream file;
-  /* -- MISSING CODE -- */
+  file.open(fileName); // Jun /* -- MISSING CODE -- */
   if (!file.fail())
   {
     int mapWidth, mapHeight, playerLocationAsIndex;
     char lookingDirection;
-    /* -- MISSING CODE -- */
+    file >> mapWidth;
+    file >> mapHeight;
+    file >> playerLocationAsIndex;
+    file >> lookingDirection;/* -- MISSING CODE -- */
     if (mapWidth > 0 && mapHeight > 0)
     {
       const int charsToWriteIncludingNullTerminator = mapWidth + 1;
-      char buffer[MAP_MAX_WIDTH_HEIGHT + 1];
+      char buffer[MAP_MAX_WIDTH_HEIGHT + 1]; // Jun note: global constant MAP_MAX_WIDTH_HEIGHT = 255
       string mapText = "";
 
       for (int i = 0; /* -- MISSING CODE -- */; i++)
