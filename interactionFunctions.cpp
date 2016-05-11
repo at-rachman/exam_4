@@ -304,7 +304,7 @@ void doLoadGame(const char slot)
 void doLoadDefaultGame()
 {
   loadDefaultMap();
-  /* -- MISSING CODE -- */
+  doUpdateAfterLoadGame(); /* -- Atmanjaya Updated 5/10 -- */
 
   lastMessage = "Loaded default game.";
 }
