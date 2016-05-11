@@ -22,7 +22,7 @@ using namespace std;
 int main()
 {
   //doLoadGame(); /* Atmanjaya updated 5/8 */
-  loadDefaulGame();
+  loadDefaultGame();
 
   while (true)
   {
