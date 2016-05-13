@@ -21,15 +21,20 @@ using namespace std;
 
 int main()
 {
-  //doLoadGame(); /* Atmanjaya updated 5/8 */
+  //doLoadGame(); /* #22 Atmanjaya updated 5/8 */
   doLoadDefaultGame();
 
   while (true)
   {
     clearScreen();
     printScreen();
+    lastMessage.clear(); // #24 Yunjun Ma
 
     char input = readCharacterInput();
+    if (input == KEYBOARD_QUIT) // #23 Yunjun Ma, 5/10
+    {
+      break;
+    }
     doCommand(input);
   }
 

@@ -50,7 +50,7 @@ char convertInventoryIndexToItemChar(const int);
 int max(int, int);
 int min(int, int);
 
-int getLookingAtX(const int currentX, const char currentSymbol)
+int getLookingAtX(const int currentX, const char currentSymbol) // #17 Atmanjaya Rachman & Yunjun Ma
 {
   switch(currentSymbol)
   {
@@ -90,7 +90,7 @@ void inventoryAdd(const char item)
       case MAP_SQUARE_PEBBLES:
         INVENTORY_ARRAY[inventoryIndex] += 2;
         break;
-      case MAP_SQUARE_PEBBLE: //updated during class session
+      case MAP_SQUARE_PEBBLE: // #18 updated during class session (Atmanjaya Rachman, Ben Wheaton & Yunjun Ma)
       case MAP_SQUARE_KEY:
       case MAP_SQUARE_PLANK:
       case MAP_SQUARE_ROPE:
@@ -180,7 +180,7 @@ bool printInventoryRow(const int row, const int displayWidth)
         int count = INVENTORY_ARRAY[itemIndex];
         if (count > 0)
         {
-          cout << setw(symbolWidth) << left << convertInventoryIndexToItemChar(itemIndex) << setw(nameWidth) << left << "Key" << setw(numberWidth) << right << count; // Jun
+          cout << setw(symbolWidth) << left << convertInventoryIndexToItemChar(itemIndex) << setw(nameWidth) << left << "Key" << setw(numberWidth) << right << count; // #19 Yunjun Ma
           success = true;
         }
         break;
@@ -225,7 +225,7 @@ bool printInventoryRow(const int row, const int displayWidth)
         {
          cout << setw(symbolWidth) << left << convertInventoryIndexToItemChar(itemIndex) << setw(nameWidth) << "Pebble" << setw(numberWidth) << right << count;
          success = true; 
-        }/* -- Atmanjaya updated 5/8 -- */
+        }/* -- #20 Atmanjaya updated 5/8 -- */
         break;
       }
   }
