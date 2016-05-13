@@ -283,14 +283,12 @@ void doLoadGame(const char slot)
     return;
   }
 
-  string fileName = "gameSlot";
-  fileName += slot;
-  fileName += ".txt";
+  string fileName = "gameSlotN.txt";
+  fileName[8] = slot; // #14 Updated 5/13 
   if (!loadGame(fileName))
   {
-    lastMessage = "Could not load '";
-    lastMessage += fileName;
-    lastMessage += "'. File is corrupt or does not exist.";
+    lastMessage = "Could not load 'fileName'. File is corrupt or does not exist.";
+    lastMessage.replace(16, 8, fileName);
     return;
   }
 
