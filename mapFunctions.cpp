@@ -73,7 +73,7 @@ char getMapSquare(const int x, const int y)
   char result = MAP_SQUARE_ROCK;
   if (x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT)
   {
-    result = MAP[MAP_HEIGHT * y + x];
+    result = MAP[MAP_WIDTH * y + x];
   }
   return result;
 }
@@ -86,7 +86,7 @@ bool setMapSquare(const int x, const int y, const char currentValue, const char 
       y >= 0 && y < MAP_HEIGHT &&
       getMapSquare(x, y) == currentValue)
   {
-    MAP[MAP_HEIGHT * y + x] = newValue;
+    MAP[MAP_WIDTH * y + x] = newValue;
     result = true;
   }
 
@@ -215,17 +215,21 @@ bool saveGame(string fileName, const int playerX, const int playerY, const char 
   bool success = false;
 
   ofstream file;
-  /* -- MISSING CODE -- */
+  file.open(fileName);/* -- MISSING CODE -- */
   if (!file.fail())
   {
     // write map dimensions and player location
-    int playerSymbolIndex = MAP_HEIGHT * playerY + playerX; /* -- Atmanjaya Updated 5/10 -- */
+    int playerSymbolIndex = MAP_WIDTH * playerY + playerX; /* -- Atmanjaya Updated 5/10 -- */
     file << MAP_WIDTH << ' ' << MAP_HEIGHT << ' ' << playerSymbolIndex << ' ' << lookingDirection << endl;
 
     // write map
     for (int i = 0; i < MAP_HEIGHT; i++)
     {
-      file << /* -- MISSING CODE -- REPLACE true AT RIGHT -- */ true << endl;
+      for (int x = 0; x < MAP_WIDTH; x++)
+      {
+        file << MAP[MAP_WIDTH * i + x]; /* -- MISSING CODE -- REPLACE true AT RIGHT -- */
+      }
+      file << endl;
     }
 
     // write inventory

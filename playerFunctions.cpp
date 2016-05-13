@@ -180,7 +180,7 @@ bool printInventoryRow(const int row, const int displayWidth)
         int count = INVENTORY_ARRAY[itemIndex];
         if (count > 0)
         {
-          cout << convertInventoryIndexToItemChar(itemIndex) << "Key" << count;
+          cout << setw(symbolWidth) << left << convertInventoryIndexToItemChar(itemIndex) << setw(nameWidth) << left << "Key" << setw(numberWidth) << right << count; // Jun
           success = true;
         }
         break;
@@ -191,7 +191,7 @@ bool printInventoryRow(const int row, const int displayWidth)
         int count = INVENTORY_ARRAY[itemIndex];
         if (count > 0)
         {
-          cout << convertInventoryIndexToItemChar(itemIndex) << "Rope" << count;
+          cout << setw(symbolWidth) << left << convertInventoryIndexToItemChar(itemIndex) << setw(nameWidth) << left << "Rope" << setw(numberWidth) << right << count;
           success = true;
         }
         break;
@@ -202,7 +202,7 @@ bool printInventoryRow(const int row, const int displayWidth)
         int count = INVENTORY_ARRAY[itemIndex];
         if (count > 0)
         {
-          cout << convertInventoryIndexToItemChar(itemIndex) << "Wood Plank" << count;
+          cout << setw(symbolWidth) << left << convertInventoryIndexToItemChar(itemIndex) << setw(nameWidth) << "Wood Plank" << setw(numberWidth) << right << count;
           success = true;
         }
         break;
@@ -218,12 +218,12 @@ bool printInventoryRow(const int row, const int displayWidth)
         int count = INVENTORY_ARRAY[itemIndex];
         if (hasSlingshot)
         {
-          cout << MAP_SQUARE_SLINGSHOT << "Slingshot" << count;
+          cout << setw(symbolWidth) << left << MAP_SQUARE_SLINGSHOT << setw(nameWidth) << "Slingshot" << setw(numberWidth) << right << count;
           success = true;
         }
         else if (count > 0)
         {
-         cout << convertInventoryIndexToItemChar(itemIndex) << "Pebble" << count;
+         cout << setw(symbolWidth) << left << convertInventoryIndexToItemChar(itemIndex) << setw(nameWidth) << "Pebble" << setw(numberWidth) << right << count;
          success = true; 
         }/* -- Atmanjaya updated 5/8 -- */
         break;
@@ -272,12 +272,12 @@ char convertInventoryIndexToItemChar(const int index)
 
 int max(int a, int b)
 {
-  return a;
+  return (a > b) ? a : b;
 }
 
 int min(int a, int b)
 {
-  return a;
+  return (a < b ) ? a : b;
 }
 
 // DO NOT CHANGE OR REMOVE THE FOLLOWING LINE

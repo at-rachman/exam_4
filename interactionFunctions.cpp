@@ -249,7 +249,7 @@ void doUse(const int x, const int y, const char lookingDirection)
     setMapSquare(itemX, itemY, mapSquare, MAP_SQUARE_CHASM);
     lastMessage = "You drop a pebble into the chasm, counting the seconds until it hits the bottom. You hear nothing.";
   }
-  else if (mapSquare == MAP_SQUARE_PLANK && itemToUse == MAP_SQUARE_PEBBLE)
+  else if (mapSquare == MAP_SQUARE_PLANK && itemToUse == MAP_SQUARE_PEBBLE && inventoryHas(MAP_SQUARE_SLINGSHOT))
   {
     inventoryUse(itemToUse);
     setMapSquare(itemX, itemY, mapSquare, MAP_SQUARE_PEBBLE);
