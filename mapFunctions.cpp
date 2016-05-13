@@ -137,7 +137,7 @@ bool loadGame(string fileName)
     file >> mapWidth;
     file >> mapHeight;
     file >> playerLocationAsIndex;
-    file >> lookingDirection;/* -- MISSING CODE -- */
+    file >> lookingDirection; /* -- MISSING CODE -- */
     if (mapWidth > 0 && mapHeight > 0)
     {
       const int charsToWriteIncludingNullTerminator = mapWidth + 1;
@@ -215,7 +215,7 @@ bool saveGame(string fileName, const int playerX, const int playerY, const char 
   bool success = false;
 
   ofstream file;
-  file.open(fileName);/* -- MISSING CODE -- */
+  file.open(fileName); /* -- MISSING CODE -- */
   if (!file.fail())
   {
     // write map dimensions and player location
@@ -227,7 +227,7 @@ bool saveGame(string fileName, const int playerX, const int playerY, const char 
     {
       for (int x = 0; x < MAP_WIDTH; x++)
       {
-        file << MAP[MAP_WIDTH * i + x]; /* -- MISSING CODE -- REPLACE true AT RIGHT -- */
+        file << MAP[MAP_WIDTH * i + x]; // #8 Atmanjaya 5/12 /* -- MISSING CODE -- REPLACE true AT RIGHT -- */
       }
       file << endl;
     }
