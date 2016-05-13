@@ -7,6 +7,7 @@
 #define __DEFINE_INTERACTION_FUNCTIONS_CPP__
 
 #include <cctype>
+#include <string>
 #include <iostream>
 using namespace std;
 
