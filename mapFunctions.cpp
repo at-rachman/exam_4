@@ -156,7 +156,7 @@ bool loadGame(string fileName) // #8 Atmanjaya Rachman
           i--;
           continue;
         }
-        mapText[i]; /* -- MISSING CODE -- */
+        mapText; /* -- MISSING CODE -- */
       }
 
       if (mapText.length() == mapWidth * mapHeight)
