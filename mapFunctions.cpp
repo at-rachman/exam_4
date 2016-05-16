@@ -225,7 +225,7 @@ bool saveGame(string fileName, const int playerX, const int playerY, const char 
     // write map
     for (int i = 0; i < MAP_HEIGHT; i++)
     {
-      for (int x = 0; x < MAP_WIDTH; x++)
+      for (int x = 0; j < MAP_WIDTH; j++)
       {
         file << MAP[MAP_WIDTH * i + x]; // #8 Atmanjaya 5/12 /* -- MISSING CODE -- REPLACE true AT RIGHT -- */
       }
