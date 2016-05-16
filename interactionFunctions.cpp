@@ -81,7 +81,7 @@ char readCharacterInput()
   return input;
 }
 
-void doCommand(const char command)
+void doCommand(const char command) // #11, #12
 {
   switch(command)
   {
@@ -216,7 +216,7 @@ void doTake(const int x, const int y, const char lookingDirection)
   }
 }
 
-void doUse(const int x, const int y, const char lookingDirection)
+void doUse(const int x, const int y, const char lookingDirection) // #13, #25, #26
 {
   char itemToUse;
   cout << endl << "What would you like to use? ";
@@ -278,7 +278,7 @@ void doLoadGame()
 
 void doLoadGame(const char slot)
 {
-  if (!isdigit(slot)/* -- MISSING CODE -- REPLACE true AT RIGHT -- true */)
+  if (!isdigit(slot)/* -- MISSING CODE -- REPLACE true AT RIGHT -- true */) // #15 YunJun Ma
   {
     lastMessage = "Must enter 0-9 to load a saved game.";
     return;
@@ -288,16 +288,15 @@ void doLoadGame(const char slot)
   fileName[8] = slot; // #14 Updated 5/13 
   if (!loadGame(fileName))
   {
-    lastMessage = "Could not load 'fileName'. File is corrupt or does not exist.";
+    lastMessage = "Could not load 'fileName'. File is corrupt or does not exist."; // #16
     lastMessage.replace(16, 8, fileName);
     return;
   }
 
   doUpdateAfterLoadGame();
 
-  lastMessage = "Loaded game ";
-  lastMessage += slot;
-  lastMessage += ".";
+  lastMessage = "Loaded game N."; // #14
+  lastMessage [12] = slot;
 }
 
 void doLoadDefaultGame()
@@ -320,7 +319,7 @@ void doUpdateAfterLoadGame()
   inventorySet(FILE_INVENTORY_ITEMS, FILE_INVENTORY_VALUES, FILE_INVENTORY_LENGTH);
 }
 
-void doSaveGame()
+void doSaveGame() // #14, #15 ,#16
 {
   cout << endl << "Enter 0-9 to save the game in that slot. Enter any other visible character to cancel. Input: ";
   char slot;
@@ -331,9 +330,8 @@ void doSaveGame()
     return;
   }
 
-  string fileName = "gameSlot";
-  fileName += slot;
-  fileName += ".txt";
+  string fileName = "gameSlotN.txt"; // #14
+  fileName[8] = slot;
 
   int numberOfItems = 0;
   char inventoryItems[INVENTORY_LENGTH];
@@ -351,15 +349,13 @@ void doSaveGame()
 
   if (!saveGame(fileName, playerX, playerY, playerSymbol, inventoryItems, inventoryValues, numberOfItems))
   {
-    lastMessage = "Could not save '";
-    lastMessage += fileName;
-    lastMessage += "'. Data is corrupt or writing files is not allowed.";
+    lastMessage = "Could not save 'fileName'. Data is corrupt or writing files is not allowed."; // #16
+    lastMessage.replace(16, 8, fileName);
     return;
   }
 
-  lastMessage = "Saved game to slot ";
-  lastMessage += slot;
-  lastMessage += ".";
+  lastMessage = "Saved game to slot N."; // #16
+  lastMessage[19] = slot;
 }
 
 // DO NOT CHANGE OR REMOVE THE FOLLOWING LINE
