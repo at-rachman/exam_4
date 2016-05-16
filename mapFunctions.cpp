@@ -124,7 +124,7 @@ void printMapRow(const int centerX, const int centerY, const int rowOffset, cons
   }
 }
 
-bool loadGame(string fileName)
+bool loadGame(string fileName) // #8 Atmanjaya Rachman
 {
   bool success = false;
 
@@ -144,9 +144,9 @@ bool loadGame(string fileName)
       char buffer[MAP_MAX_WIDTH_HEIGHT + 1]; // Jun note: global constant MAP_MAX_WIDTH_HEIGHT = 255
       string mapText = "";
 
-      for (int i = 0; /* -- MISSING CODE -- */; i++)
+      for (int i = 0; i < mapHeight /* -- MISSING CODE -- */; i++)
       {
-        /* -- MISSING CODE -- */
+        file.getline(buffer, mapWidth); /* -- MISSING CODE -- */
         if (file.fail())
         {
           break;
@@ -156,7 +156,7 @@ bool loadGame(string fileName)
           i--;
           continue;
         }
-        /* -- MISSING CODE -- */
+        mapText[i] = charsToWriteIncludingNullTerminator; /* -- MISSING CODE -- */
       }
 
       if (mapText.length() == mapWidth * mapHeight)
